@@ -1,5 +1,5 @@
 #Source: https://www.nginx.com/blog/video-streaming-for-remote-learning-with-nginx/
-FROM ubuntu:latest AS builder
+FROM ubuntu:latest
 LABEL version="0.0.1"
 LABEL maintainer="Marcus Christensen"
 EXPOSE 80
@@ -23,5 +23,4 @@ RUN ["make"]
 RUN ["make", "install"]
 
 RUN ["/usr/local/nginx/sbin/nginx", "-t"]
-#CMD ["/usr/local/nginx/sbin/nginx", "&&", "cat"]
 CMD ["/usr/local/nginx/sbin/nginx", "-g", "daemon off;"]
